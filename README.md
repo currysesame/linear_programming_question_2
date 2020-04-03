@@ -39,6 +39,7 @@ They need minimize the cost and satisfy these requirements. Please use the integ
 The following is my solution:
 
 They can buy:
+
 |Beef burger set*1|	Beef burger*0	|French fries*1|	Coca Cola*0|
 |Pork burger set*1|	Pork burger*0	|Popcorn Chicken*0	|Sprite*1|
 |Chicken burger set*1|	Chicken burger*1|	Smoothie*1|	Black tea*0|
@@ -46,6 +47,7 @@ They can buy:
 |Party set*1| | | |			
 
 To satisfy the demand:
+
 |Beef burger*1|	French fries*5	|Coca Cola*3|
 |Pork burger*1|	Popcorn Chicken*1|	Sprite*2|
 |Chicken burger*2|	Smoothie*5|	Black tea*1|
