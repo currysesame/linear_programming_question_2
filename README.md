@@ -19,7 +19,7 @@ Cannot waste too much food- buy 2 more(contain 2) main foods, 4 more(contain 4) 
 
 The menu is as follow:
 
-|Set|	price|	Main food	|Sub food	|drinks|
+|Set|	Price|	Main food	|Sub food	|Drinks|
 | ----- | ------ | ------ | ------ | ------ |
 |Beef burger set	|150|	Beef burger	|French fries	|Coca Cola|
 |Pork burger set	|130|	Pork burger	|Popcorn Chicken|	Sprite|
@@ -27,7 +27,7 @@ The menu is as follow:
 |Fried chicken set	|150|	fried chicken *2 |	Salad	|Green tea|
 |Party set	|200	|fried chicken *4	|French fries *3、smoothie *3	|Coca Cola *4|
 
-|Main food	|price	|Sub food	|price|	drinks|	price|
+|Main food	|Price	|Sub food	|Price|	Drinks|	Price|
 | ----- | ------ | ------ | ------ | ------ | ------ |
 |Beef burger|	120|	French fries	|55|	Coca Cola|	30|
 |Pork burger|	100|	Popcorn Chicken|	60|	Sprite	|30|
@@ -40,6 +40,7 @@ The following is my solution:
 
 They can buy:
 
+|Set	|Main food	|Sub food	|Drinks|
 | ----- | ------ | ------ | ------ | 
 |Beef burger set*1|	Beef burger*0	|French fries*1|	Coca Cola*0|
 |Pork burger set*1|	Pork burger*0	|Popcorn Chicken*0	|Sprite*1|
@@ -49,6 +50,7 @@ They can buy:
 
 To satisfy the demand:
 
+|Main food	|Sub food	|Drinks|
 | ----- | ------ | ------ |
 |Beef burger*1|	French fries*5	|Coca Cola*3|
 |Pork burger*1|	Popcorn Chicken*1|	Sprite*2|
