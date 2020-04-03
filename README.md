@@ -13,6 +13,7 @@ Eight people want to enjoy the party, there are requests:
 |F|	Chicken burger|	Smoothie *2|	|	Sprite|
 |G|	(Any Main)|	French fries|	Smoothie|	(Any drink)|
 |H|	Fried chicken|	(Any sub food)|	|	Sprite|
+
 Other constrains:
 Cannot waste too much food- buy 2 more(contain 2) main foods, 4 more(contain 4) sub foods or 3 more(contain 3) drinks are totally the waste.
 
