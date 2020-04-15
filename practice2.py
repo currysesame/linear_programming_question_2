@@ -162,7 +162,10 @@ def shrink_cases(cases):
 prices = np.array([120, 55, 30, 100, 60, 30, 110, 45, 25, 60, 50, 25, 150, 130, 140, 150, 200])
 desired_food_origin = np.array([1,5,2,0,1,2,1,4,1,3,2,0])
 
-Mem_All = []
+report_sheets = []
+# the following for-loops are for just one objective,
+# for chosen one specific food which is not descript clear in the question (the requirements).
+# so add all the choices be the situation, and analyse these cases.
 for main in range(4):
     for humb1 in range(3):
         for humb2 in range(3):
@@ -175,20 +178,28 @@ for main in range(4):
                     desired_food[3*sub + 1] += 1
                     desired_food[3*drink + 2] += 1
                     
-                    Mem = []
+                    good_cases = []
+                    # in such a background, chose one random sheet and start training
+                    # if no any result is good enough, try it again. until 40 times.
+                    # if there exist a good enough result, then jump out for another situation.
                     for x in range(40):
+                        # initial random case
                         cases = np.random.randint(2, size=17)
-                        if len(Mem)>0:
+                        # if find the good enough, jump out for another situation.
+                        if len(good_cases)>0:
                             break
+                        # each case uses 150 iterations.
                         for i in range(150):
-                            # update process
+                            # avoid infeasible cases, randomly drop one out.
                             if cases[16] == 1 and cases[15] == 1:
                                 cases[np.int(15 + np.random.randint(2, size=1))] = 0
                             print('cases initial',cases)
                             update_cases = update_one_step(cases)
                             print('updata       ', update_cases)
                             index = i % 12
+                            #update
                             cases[index] = cases[index] - update_cases[index]
+                            # avoid explosion
                             cases = round_off(cases)
                             cases = shrink_cases(cases)
                             print('cases new    ',cases)
@@ -207,16 +218,19 @@ for main in range(4):
                             print('item diff',total_item_loss(cases))
                             print('price',cost_function(cases))
                             
+                            # save the good enough cases
                             if total_item_loss(cases)<=3 and cost_function(cases)<=1500 and test_enough(cases) and test_not_too_much(cases):
-                                if len(Mem) == 0:
-                                    Mem.append(desired_food)
-                                    Mem.append(cases)
-                                    Mem.append(total_item_loss(cases))
-                                    Mem.append(cost_function(cases))
+                                # for initial
+                                if len(good_cases) == 0:
+                                    good_cases.append(desired_food)
+                                    good_cases.append(cases)
+                                    good_cases.append(total_item_loss(cases))
+                                    good_cases.append(cost_function(cases))
                                 else:
-                                    if Mem[-1] != cost_function(cases) or Mem[-2] != total_item_loss(cases) or test_same_cases(Mem[-3], cases):
-                                        Mem.append(desired_food)
-                                        Mem.append(cases)
-                                        Mem.append(total_item_loss(cases))
-                                        Mem.append(cost_function(cases))
-                    Mem_All.append(Mem)
+                                    # for not duplicate
+                                    if good_cases[-1] != cost_function(cases) or good_cases[-2] != total_item_loss(cases) or test_same_cases(good_cases[-3], cases):
+                                        good_cases.append(desired_food)
+                                        good_cases.append(cases)
+                                        good_cases.append(total_item_loss(cases))
+                                        good_cases.append(cost_function(cases))
+                    report_sheets.append(good_cases)
